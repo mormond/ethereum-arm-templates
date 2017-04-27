@@ -36,7 +36,7 @@
       "properties": {
         "templateLink": {
           "contentVersion": "1.0.0.0",
-          "uri": "[concat(parameters('contentRoot'), '/utilityTemplates/template.network.nsgList.json')]"
+          "uri": "[concat(parameters('contentRoot'), '/utilityTemplates/template.network.subnets.json')]"
         },
         "mode": "Incremental",
         "parameters": {
@@ -66,7 +66,7 @@
             "[parameters('addressPrefix')]"
           ]
         },
-        "subnets": "[reference(concat(variables('namingInfix'),'-nsgs')).outputs.nsg.value]"
+        "subnets": "[reference(concat(variables('namingInfix'),'-nsgs')).outputs.subnets.value]"
       },
       "dependsOn": [
         "[concat(variables('namingInfix'),'-nsgs')]"
@@ -78,7 +78,7 @@
       "type": "object",
       "value": {
         "network" : "[reference(variables('virtualNetworkName'))]",
-        "nsgs" : "[reference(concat(variables('namingInfix'),'-nsgs')).outputs.nsg.value]"
+        "id" : "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
       }
     }
   }

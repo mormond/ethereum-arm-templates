@@ -34,7 +34,7 @@
       "properties": {
         "templateLink": {
           "contentVersion": "1.0.0.0",
-          "uri": "[concat(parameters('contentRoot'), '/utilityTemplates/template.network.nsg.json')]"
+          "uri": "[concat(parameters('contentRoot'), '/utilityTemplates/template.network.subnet.json')]"
         },
         "mode": "Incremental",
         "parameters": {
@@ -94,7 +94,7 @@
     }
   ],
   "outputs": {
-    "nsg": {
+    "subnets": {
       "type": "array",
       "value": "[reference(concat(variables('namingInfix'),'-nsgLoop-merge-', length(parameters('subnets')))).outputs.result.value]"
     }
