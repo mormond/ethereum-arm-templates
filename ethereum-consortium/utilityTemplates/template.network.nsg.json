@@ -18,12 +18,13 @@
   "variables": {
     "resourceLocation": "[parameters('location')]",
     "namingInfix": "[parameters('namingInfix')]",
-    "subnetName": "[concat(variables('namingInfix'), '-nsg-', parameters('subnet').name)]"
+    "subnetName": "[concat(variables('namingInfix'), '-subnet-', parameters('subnet').name)]",
+    "nsgName": "[concat(variables('subnetName'), '-nsg')]"
   },
   "resources": [
     {
       "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[variables('subnetName')]",
+      "name": "[variables('nsgName')]",
       "apiVersion": "2016-03-30",
       "location": "[variables('resourceLocation')]",
       "properties": {
@@ -39,7 +40,7 @@
         "properties": {
           "addressPrefix": "[parameters('subnet').prefix]",
           "networkSecurityGroup": {
-            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('subnetName'))]"
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
           }
         }
       }

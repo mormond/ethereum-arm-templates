@@ -74,12 +74,11 @@
     }
   ],
   "outputs": {
-    "Network": {
+    "Result": {
       "type": "object",
       "value": {
-        "name": "[variables('virtualNetworkName')]",
-        "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
-        "subnets": "[reference(concat(variables('namingInfix'),'-nsgs')).outputs.nsg.value]"
+        "network" : "[reference(variables('virtualNetworkName'))]",
+        "nsgs" : "[reference(concat(variables('namingInfix'),'-nsgs')).outputs.nsg.value]"
       }
     }
   }
