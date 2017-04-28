@@ -43,7 +43,7 @@
           "sourceAddressPrefix": "*",
           "destinationAddressPrefix": "*",
           "access": "Allow",
-          "priority": "[add(parameters('ruleSeed'), 2)]",
+          "priority": "[add(parameters('ruleSeed'), 1)]",
           "direction": "Inbound"
         }
       },
@@ -56,7 +56,7 @@
           "sourceAddressPrefix": "VirtualNetwork",
           "destinationAddressPrefix": "*",
           "access": "Allow",
-          "priority": "[add(parameters('ruleSeed'), 1)]",
+          "priority": "[add(parameters('ruleSeed'), 2)]",
           "direction": "Inbound"
         }
       },
@@ -69,7 +69,7 @@
           "sourceAddressPrefix": "*",
           "destinationAddressPrefix": "*",
           "access": "Allow",
-          "priority": "[add(parameters('ruleSeed'), 2)]",
+          "priority": "[add(parameters('ruleSeed'), 3)]",
           "direction": "Inbound"
         }
       }
