@@ -146,6 +146,9 @@
           "securityRules": {
             "value": "[reference(variables('extensionName')).outputs.result.value.nsgRules]"
           },
+          "exportRules": {
+            "value": "[reference(variables('extensionName')).outputs.result.value.exports]"
+          },
           "contentRoot" : {
             "value" : "[variables('contentRoot')]"
           }
