@@ -8,7 +8,7 @@
         "description": "location of resources"
       }
     },
-    "securityRules": {
+    "subnets": {
       "type": "array",
       "defaultValue": []
     },
@@ -28,21 +28,7 @@
     "contentRoot": "[parameters('contentRoot')]",
     "namingInfix": "[parameters('namingInfix')]",
     "networkName": "[concat(variables('namingInfix'), '.Network')]",
-    "defaultSecurityRules": [
-      {
-        "name": "allow-ssh",
-        "properties": {
-          "protocol": "Tcp",
-          "sourcePortRange": "*",
-          "destinationPortRange": "22",
-          "sourceAddressPrefix": "Internet",
-          "destinationAddressPrefix": "*",
-          "access": "Allow",
-          "priority": 100,
-          "direction": "Inbound"
-        }
-      }
-    ],
+    
     "defaultExportRules": [
       {
         "Name": "SSH",
@@ -72,13 +58,7 @@
             "value": "[variables('resourceLocation')]"
           },
           "subnets": {
-            "value": [
-              {
-                "name": "dashboard",
-                "prefix": "10.0.0.0/24",
-                "rules": "[concat(variables('defaultSecurityRules'), parameters('securityRules'))]"
-              }
-            ]
+            "value": "[parameters('subnets')]"
           },
           "contentRoot": {
             "value": "[variables('contentRoot')]"
@@ -120,9 +100,7 @@
         "id": "[reference(variables('networkName')).outputs.Result.value.id]",
         "ip": "[reference(variables('loadbalancerName')).outputs.LoadBalancer.value.ip]",
         "poolId": "[reference(variables('loadbalancerName')).outputs.LoadBalancer.value.backendPoolId]",
-        "subnets": {
-          "dashboard": "[reference(variables('networkName')).outputs.Result.value.network.subnets[0].id]"
-        }
+        "subnets": "[reference(variables('networkName')).outputs.Result.value.network.subnets]"
       }
     }
   }

@@ -80,7 +80,7 @@
     ],
     "resourceLocation": "[tolower(variables('resourceLocations')[length(take(parameters('locationOverride'),1))])]",
     "namingInfix": "[toLower(parameters('dashboardName'))]",
-    "rootName" : "[concat('Consortium.', parameters('dashboardName'))]",
+    "rootName": "[concat('Consortium.', parameters('dashboardName'))]",
     "dNetworkName": "[concat(variables('rootName'), '.Network')]",
     "dVMSSDashboard": "[concat(variables('rootName'), '.VMSSCommands')]",
     "initCommands": [
@@ -98,6 +98,21 @@
         "extension": "ethStats.dashboard.json",
         "data": {
           "dockerImage": "[parameters('dockerImage')]"
+        }
+      }
+    ],
+    "defaultSecurityRules": [
+      {
+        "name": "allow-ssh",
+        "properties": {
+          "protocol": "Tcp",
+          "sourcePortRange": "*",
+          "destinationPortRange": "22",
+          "sourceAddressPrefix": "Internet",
+          "destinationAddressPrefix": "*",
+          "access": "Allow",
+          "priority": 100,
+          "direction": "Inbound"
         }
       }
     ]
@@ -143,14 +158,20 @@
           "namingInfix": {
             "value": "[variables('namingInfix')]"
           },
-          "securityRules": {
-            "value": "[reference(variables('extensionName')).outputs.result.value.nsgRules]"
+          "subnets": {
+            "value": [
+              {
+                "name": "default",
+                "prefix": "10.0.0.0/24",
+                "rules": "[concat(variables('defaultSecurityRules'), reference(variables('extensionName')).outputs.result.value.nsgRules)]"
+              }
+            ]
           },
           "exportRules": {
             "value": "[reference(variables('extensionName')).outputs.result.value.exports]"
           },
-          "contentRoot" : {
-            "value" : "[variables('contentRoot')]"
+          "contentRoot": {
+            "value": "[variables('contentRoot')]"
           }
         }
       },
@@ -201,7 +222,7 @@
           "networkConfiguration": {
             "value": {
               "subnet": {
-                "id": "[reference(variables('dNetworkName')).outputs.network.value.subnets.dashboard]"
+                "id": "[reference(variables('dNetworkName')).outputs.network.value.subnets[0].id]"
               },
               "loadBalancerBackendAddressPools": [
                 {
