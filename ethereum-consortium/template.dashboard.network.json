@@ -45,10 +45,10 @@
     ],
     "defaultExportRules": [
       {
-        "name": "SSH",
-        "frontendPort": 22,
-        "backendPort": 22,
-        "protocol": "Tcp"
+        "Name": "SSH",
+        "Source": 22,
+        "Destination": 22,
+        "Protocol": "Tcp"
       }
     ],
     "loadBalancerName": "[concat(variables('namingInfix'), '-lb')]"
