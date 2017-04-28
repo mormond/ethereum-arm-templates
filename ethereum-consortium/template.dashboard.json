@@ -145,6 +145,9 @@
           },
           "securityRules": {
             "value": "[reference(variables('extensionName')).outputs.result.value.nsgRules]"
+          },
+          "contentRoot" : {
+            "value" : "[variables('contentRoot')]"
           }
         }
       },
@@ -214,7 +217,7 @@
   "outputs": {
     "ip": {
       "type": "string",
-      "value": "[reference(variables('dNetworkName')).outputs.network.value.ip.ipAddress]"
+      "value": "[reference(variables('dNetworkName')).outputs.network.value.ip]"
     }
   }
 }

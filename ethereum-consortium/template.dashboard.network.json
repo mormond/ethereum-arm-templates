@@ -124,11 +124,11 @@
     "Network": {
       "type": "object",
       "value": {
-        "id": "[reference(variables('networkName')).outputs.Network.value.id]",
-        "ip": "[reference(variables('loadbalancerName')).outputs.value.ip]",
-        "poolId": "[reference(variables('loadbalancerName')).outputs.value.backendPoolId]",
+        "id": "[reference(variables('networkName')).outputs.Result.value.id]",
+        "ip": "[reference(variables('loadbalancerName')).outputs.LoadBalancer.value.ip]",
+        "poolId": "[reference(variables('loadbalancerName')).outputs.LoadBalancer.value.backendPoolId]",
         "subnets": {
-          "dashboard": "[reference(variables('networkName')).outputs.Network.value.subnets[0].properties.id]"
+          "dashboard": "[reference(variables('networkName')).outputs.Result.value.network.subnets[0].id]"
         }
       }
     }
