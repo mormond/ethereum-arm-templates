@@ -199,7 +199,7 @@
               },
               "loadBalancerBackendAddressPools": [
                 {
-                  "id": "[reference(variables('dNetworkName')).outputs.network.value.internal.poolId]"
+                  "id": "[reference(variables('dNetworkName')).outputs.network.value.poolId]"
                 }
               ]
             }

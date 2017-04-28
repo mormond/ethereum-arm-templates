@@ -39,14 +39,7 @@
         }
       }
     ],
-    "subnets": [
-      {
-        "name": "dashboard",
-        "prefix": "10.0.0.0/24",
-        "rules": "[concat(variables('defaultSecurityRules'), parameters('securityRules'))]"
-      }
-    ],
-    "loadBalancerName": "[concat(variables('namingInfix'), '-lb')]",
+    "loadBalancerName": "[concat(variables('namingInfix'), '-lb')]"
   },
   "resources": [
     {
@@ -67,7 +60,13 @@
             "value": "[variables('resourceLocation')]"
           },
           "subnets": {
-            "value": "[variables('subnets')]"
+            "value": [
+              {
+                "name": "dashboard",
+                "prefix": "10.0.0.0/24",
+                "rules": "[concat(variables('defaultSecurityRules'), parameters('securityRules'))]"
+              }
+            ]
           },
           "contentRoot": {
             "value": "[variables('contentRoot')]"
@@ -95,19 +94,19 @@
           "rules": {
             "value": [
               {
-                "name" : "SSH",
+                "name": "SSH",
                 "frontendPort": 22,
                 "backendPort": 22,
                 "protocol": "Tcp"
               },
               {
-                "name" : "Dashboard",
+                "name": "Dashboard",
                 "frontendPort": 3000,
                 "backendPort": 3000,
                 "protocol": "Tcp"
               },
               {
-                "name" : "Registrar",
+                "name": "Registrar",
                 "frontendPort": 3001,
                 "backendPort": 3001,
                 "protocol": "Tcp"
@@ -126,7 +125,8 @@
       "type": "object",
       "value": {
         "id": "[reference(variables('networkName')).outputs.Network.value.id]",
-        "ip": "[reference(variables('loadbalancerName')).outputs.]",
+        "ip": "[reference(variables('loadbalancerName')).outputs.value.ip]",
+        "poolId": "[reference(variables('loadbalancerName')).outputs.value.backendPoolId]",
         "subnets": {
           "dashboard": "[reference(variables('networkName')).outputs.Network.value.subnets[0].properties.id]"
         }
