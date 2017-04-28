@@ -181,9 +181,6 @@
           "instanceCount": {
             "value": 1
           },
-          "virtualNetworkName": {
-            "value": "[reference(variables('dNetworkName')).outputs.network.value.name]"
-          },
           "username": {
             "value": "[parameters('username')]"
           },
