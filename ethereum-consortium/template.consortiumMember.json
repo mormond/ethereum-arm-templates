@@ -472,13 +472,13 @@
       "type": "object",
       "value": {
         "version" : "Release-v2.0.1",
-        "ip": "[reference(variables('dNetworkName')).outputs.network.value.publicIp]",
+        "ip": "[reference(variables('dNetworkName')).outputs.network.value.ip]",
         "network": "[reference(variables('dNetworkName')).outputs.network.value]"
       }
     },
     "PublicIp": {
       "type": "string",
-      "value": "[reference(variables('dNetworkName')).outputs.network.value.publicIp]"
+      "value": "[reference(variables('dNetworkName')).outputs.network.value.ip]"
     },
     "Network": {
       "type": "object",
