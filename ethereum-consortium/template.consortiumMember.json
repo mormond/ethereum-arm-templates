@@ -475,6 +475,14 @@
         "ip": "[reference(variables('dNetworkName')).outputs.network.value.publicIp]",
         "network": "[reference(variables('dNetworkName')).outputs.network.value]"
       }
+    },
+    "PublicIp": {
+      "type": "string",
+      "value": "[reference(variables('dNetworkName')).outputs.network.value.publicIp]"
+    },
+    "Network": {
+      "type": "object",
+      "value": "[reference(variables('dNetworkName')).outputs.network.value]"
     }
   }
 }
