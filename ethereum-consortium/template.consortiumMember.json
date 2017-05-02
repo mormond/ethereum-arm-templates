@@ -117,14 +117,12 @@
       "type": "int"
     },
     "txNodeDockerImage": {
-      "defaultValue": "ethereumex/geth-node:latest",
       "type": "string",
       "metadata": {
         "description": "The tag of the docker image to download"
       }
     },
     "minerNodeDockerImage": {
-      "defaultValue": "ethereumex/geth-node:latest",
       "type": "string",
       "metadata": {
         "description": "The tag of the docker image to download"
@@ -153,7 +151,7 @@
     }
   },
   "variables": {
-    "contentRootUrl": "[concat('https://raw.githubusercontent.com/EthereumEx/ethereum-arm-templates/', parameters('contentVersion'), '/ethereum-consortium')]",
+    "contentRootUrl": "[concat('https://raw.githubusercontent.com/mormond/ethereum-arm-templates/', parameters('contentVersion'), '/ethereum-consortium')]",
     "contentRoots": [
       "[variables('contentRootUrl')]",
       "[parameters('contentRootOverride')]"

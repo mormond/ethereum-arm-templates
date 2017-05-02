@@ -114,27 +114,14 @@
       "type": "string"
     },
     "dashboardDockerImage": {
-      "defaultValue": "ethereumex/eth-stats-dashboard:latest",
-      "type": "string",
-      "allowedValues": [
-        "ethereumex/eth-stats-dashboard:latest"
-      ]
+      "type": "string"
     },
     "txNodeDockerImage": {
-      "defaultValue": "ethereumex/geth-node:latest",
-      "type": "string",
-      "allowedValues": [
-        "ethereumex/geth-node:latest",
-        "ethereumex/parity-node:latest"
-      ]
+      "type": "string"
       
     },
     "minerNodeDockerImage": {
-      "defaultValue": "ethereumex/geth-node:latest",
-      "type": "string",
-      "allowedValues": [
-        "ethereumex/geth-node:latest"
-      ]
+      "type": "string"
     },
     "locationOverride": {
       "type": "string",
@@ -145,7 +132,7 @@
     }
   },
   "variables": {
-    "contentRootUrl": "[concat('https://raw.githubusercontent.com/EthereumEx/ethereum-arm-templates/', parameters('contentVersion'), '/ethereum-consortium')]",
+    "contentRootUrl": "[concat('https://raw.githubusercontent.com/mormond/ethereum-arm-templates/', parameters('contentVersion'), '/ethereum-consortium')]",
     "contentRoots": [
       "[variables('contentRootUrl')]",
       "[parameters('contentRootOverride')]"
