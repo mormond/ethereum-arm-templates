@@ -121,20 +121,12 @@
       ]
     },
     "txNodeDockerImage": {
-      "defaultValue": "ethereumex/geth-node:latest",
-      "type": "string",
-      "allowedValues": [
-        "ethereumex/geth-node:latest",
-        "ethereumex/parity-node:latest"
-      ]
+      "type": "string"
       
     },
     "minerNodeDockerImage": {
-      "defaultValue": "ethereumex/geth-node:latest",
-      "type": "string",
-      "allowedValues": [
-        "ethereumex/geth-node:latest"
-      ]
+      "type": "string"
+
     },
     "locationOverride": {
       "type": "string",
